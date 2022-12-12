@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="py-3" *ngFor = "let detail of ficheProduit">
+    <h1 class="text-center">{{ detail.designation }}</h1>
+    <div class="p-2">
+        <div class="row py-3" style="border-radius: 5px;border-width: 1px;border-style: solid;">
+            <div class="col-12"><img class="img-fluid img-thumbnail" src="{{ detail.photo }}"></div>
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <td><strong>Société</strong></td>
+                              <td>{{ detail.societe}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>E-mail client</strong></td>
+                                <td>{{ detail.email_client }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Téléphone</strong></td>
+                                <td>{{ detail.tel }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Date</strong></td>
+                                <td>{{ detail.datedemande }}</td>
+                            </tr>
+                            <tr >
+                              <td><strong>Description</strong></td>
+                              <td>{{ detail.description }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                  <div *ngIf="detail.prix == 0">
+                    <form class="row g-3" [formGroup]="userForm">
+                      <p style="text-align: center;"><strong>Quantite : {{ detail.nb_commande }}</strong></p>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Prix devis (Ar)</span>
+                        <input type="number" class="form-control" name="prixdevis" formControlName="prixdevis">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">valide jusqu'au</span>
+                        <input type="date" class="form-control" onfocus="(this.type = 'date')" onblur="(this.type='text ')" name="datevalidite" formControlName="datevalidite">
+                      </div>
+                    </form>
+                    <div class="row">
+                      <button class="btn btn-danger float-end" type="button" (click)="valideeDevis(detail.id, detail.email_client)">Confirmer</button>
+                    </div>
+                  </div>
+                  <div *ngIf="detail.prix != 0">
+                    <p style="text-align: center;"><strong>Prix : {{ detail.prix | number }}Ar</strong></p>
+                    <div class="row">
+                      <button class="btn btn-danger float-end" type="button" (click)="valideeNotificationDetail(detail.id, detail.email_client)">Confirmer</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <button class="btn btn-outline-danger float-end" type="button" (click)="annuleeNotificationDetail(detail.id, detail.email_client)">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

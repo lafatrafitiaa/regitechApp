@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="py-3">
+
+  <a href="notification">Commandes</a>
+
+  <br><br>
+
+  <h1 class="text-center">Vos demandes de rendez-vous
+    <a href="agenda">
+      <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 10%;" width="25" height="25" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+      </svg>
+    </a>
+  </h1>
+  <br>
+
+  <div class="p-2" *ngFor="let notif of listeRdv" >
+      <div class="row py-3 shadow-sm border">
+          <div class="col-12">
+              <h5 class="text-primary" style="border-color: rgb(66,177,192); text-align: center;" >{{ notif.societe }}</h5>
+              <p>Demande de rendez-vous le <strong><em> {{ notif.daterdv }}</em></strong> à <strong><em>{{ notif.heurerdv }}</em></strong></p>
+              <div>
+                <a href="ficheRendezvous/{{ notif.id}}">voir plus &gt;</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

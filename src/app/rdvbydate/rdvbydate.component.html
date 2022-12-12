@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<br><br>
+<div class="d-grid gap-2 col-6 mx-auto">
+  <a href="agenda" class="btn btn-primary" type="button">Voir votre calendrier</a>
+</div>
+
+<div class="p-2" *ngFor="let rdv of listeRdvParDate" >
+  <h3>Les rendez-vous le : <em>{{ rdv.daterdv }}</em> </h3>
+
+  <div class="row py-3 shadow-sm border">
+
+      <div class="col-12">
+          <h5 class="text-primary" style="border-color: rgb(66,177,192); text-align: center;" >{{ rdv.societe }}</h5>
+          <p>Demande de rendez-vous le <strong><em> {{ rdv.daterdv }}</em></strong> à <strong><em>{{ rdv.heurerdv }}</em></strong></p>
+          <div>
+            <a href="ficheRendezvous/{{ rdv.id}}">voir plus &gt;</a>
+            <br>
+
+          </div>
+      </div>
+  </div>
+</div>

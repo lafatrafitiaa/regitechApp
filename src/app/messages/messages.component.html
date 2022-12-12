@@ -1,0 +1,12 @@
+<p>messages works!</p>
+<div *ngFor="let message of messages">
+  <b>{{ message.user }}</b>: {{ message.messages }}
+</div>
+
+<label for="userName">Username</label>
+<input type="text" id="userName" [(ngModel)]="user">
+
+<label for="message">Message</label>
+<input type="text" id="message" [(ngModel)]="messages">
+
+<button (click)="sendMessage(user, messages)">Send</button>

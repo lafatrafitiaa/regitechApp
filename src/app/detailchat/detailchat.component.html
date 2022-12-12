@@ -1,0 +1,50 @@
+
+  <div class="py-3" *ngFor="let client of aboutclient">
+
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center p-3"
+            style="border-top: 4px solid rgb(66,177,192);">
+            <h5 class="mb-0">
+              <a href="chat"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+              </svg></a>
+              {{ client.societe }}
+            </h5>
+          </div>
+
+          <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px" >
+            <div *ngFor="let message of conversation">
+              <div *ngIf="message.idclientssent != 1">
+              <p class="small p-2 ms-3 mb-3 rounded-3" style="background-color: #f5f6f7;">
+                {{ message.messages }}
+              </p>
+              </div>
+              <div *ngIf="message.idclientssent === 1">
+                <p class="small p-2 me-3 mb-3 text-white rounded-3" style="background-color: rgb(66,177,192);">
+                  {{ message.messages }}
+                </p>
+              </div>
+            </div>
+
+        </div>
+
+        <form [formGroup]="userForm">
+          <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+            <div class="input-group mb-0">
+              <input type="text" class="form-control" placeholder="Tapez votre message"
+                aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="messages"/>
+              <button (click)="saveMessage(client.id)" class="btn btn-success" type="button" id="button-addon2" style="padding-top: .55rem;">
+                Envoyer
+              </button>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>

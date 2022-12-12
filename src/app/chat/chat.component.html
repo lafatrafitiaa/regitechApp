@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<div class="py-3">
+    <h1 class="text-center">Message</h1>
+    <div class="p-2" *ngFor="let liste of listeMessage">
+        <div class="row py-3 border shadow-sm">
+            <div class="col-3"><img class="img-fluid rounded-circle p-1" src="assets/img/User_font_awesome.svg.png?h=33e7d01bd4c29b2c6363e923689c9499" style="border-width: 1px;border-style: solid;"></div>
+            <div class="col-9">
+                <a href="conversation/{{ liste.client }}"><h6 class="text-primary" style="border-color: rgb(66,177,192);">{{ liste.societe }} ({{ liste.tel }})</h6>
+                </a>
+                <p>{{ liste.messages }}</p>
+            </div>
+        </div>
+    </div>
+</div>

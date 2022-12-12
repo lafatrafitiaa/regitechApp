@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<div class="py-3">
+  <a href="demandeRendezvous">Rendez-vous</a>
+  <h1 class="text-center">Notification</h1>
+  <div class="p-2" *ngFor="let notif of listeNotification" >
+      <div class="row py-3 shadow-sm border">
+          <div class="col-4">
+              <img class="img-fluid img-thumbnail" src="{{ notif.photo }}">
+          </div>
+          <div class="col-8">
+              <h5 class="text-primary" style="border-color: rgb(66,177,192);">{{
+                  notif.designation
+              }}</h5>
+              <p><em>le {{ notif.datedemande }}</em></p>
+              <p><strong><em>{{notif.societe}}</em></strong> a commandé cet article.</p>
+              <div>
+                <a href="detailProduit/{{ notif.id }}">Voir &gt;</a>
+                <br>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

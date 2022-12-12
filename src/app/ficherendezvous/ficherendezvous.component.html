@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<div class="py-3" *ngFor = "let rdv of ficheRdv">
+
+
+  <h1 class="text-center">
+    <div class="d-grid gap-2 col-10 mx-auto">
+      <a href="demandeRendezvous" class="btn btn-primary" type="button">Revenir à liste des rendez-vous</a>
+    </div>
+    <br>
+    <h4>Rendez-vous avec</h4> <strong><em>{{ rdv.societe }}</em></strong>
+  </h1>
+<br>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Société</span>
+    <input type="text" class="form-control" value="{{ rdv.societe }}" disabled>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Date</span>
+    <input type="date" class="form-control" value="{{ rdv.daterdv }}" disabled>
+    <span class="input-group-text">Heure</span>
+    <input type="time" class="form-control" value="{{ rdv.heurerdv }}" disabled>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Lieu</span>
+    <input type="text" class="form-control" value="{{ rdv.lieu }}" disabled>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Email Client</span>
+    <input type="email" class="form-control" value="{{ rdv.mailclient }}" disabled>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Tel</span>
+    <input type="number" class="form-control" value="{{ rdv.tel }}" disabled>
+  </div>
+  <div class="input-group">
+    <span class="input-group-text">Motif</span>
+    <textarea class="form-control" aria-label="With textarea" disabled>{{ rdv.motif }}</textarea>
+  </div>
+
+  <br>
+
+  <div class="row" >
+    <div *ngIf="rdv.etat === 0 && rdv.daterdv >= '2022-10-05'">
+      <div class="row">
+        <button type="button" class="btn btn-success" (click)="actionButtonRdv(rdv.id, 1, rdv.mailclient)">Confirmer</button> <br><br>
+        <button type="button" class="btn btn-outline-danger" (click)="actionButtonRdv(rdv.id, 2, rdv.mailclient)">Annuler</button> <br><br>
+        <a href="formulaireReport/{{ rdv.id }}" type="button" class="btn btn-info">Reporter</a> <br><br>
+      </div>
+    </div>
+    <div *ngIf="rdv.etat === 1 && rdv.daterdv >= '2022-10-05'">
+      <div class="row">
+        <h4>Ce rendez-vous est déjà validé! </h4>
+        <button type="button" class="btn btn-outline-success" (click)="actionButtonRdv(rdv.id, 2, rdv.mailclient)">Annuler</button> <br><br>
+        <a href="formulaireReport/{{ rdv.id }}" type="button" class="btn btn-success">Reporter</a> <br><br>
+      </div>
+    </div>
+    <div *ngIf="rdv.etat === 2 && rdv.daterdv >= '2022-10-05'">
+      <div class="row">
+        <h4>Ce rendez-vous a été annuler. Vous pouvez re-valider ou même reporter.</h4>
+        <button type="button" class="btn btn-danger" (click)="actionButtonRdv(rdv.id, 1, rdv.mailclient)">Confirmer</button> <br><br>
+        <a href="formulaireReport/{{ rdv.id }}" type="button" class="btn btn-success">Reporter</a> <br><br>
+      </div>
+    </div>
+    <div *ngIf="rdv.daterdv <= '2022-10-05'">
+      <h4>Rendez-vous expiré, vous pouvez reporter.</h4>
+      <div class="row">
+        <a href="formulaireReport/{{ rdv.id }}" type="button" class="btn btn-info">Reporter</a> <br><br>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

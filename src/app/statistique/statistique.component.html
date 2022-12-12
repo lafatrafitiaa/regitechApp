@@ -1,0 +1,49 @@
+<app-header></app-header>
+<h1 style="text-align: center;">Statistique</h1>
+<br>
+<h2 style="text-align: center;">Par rapport commande et devis</h2>
+<div class="chart-container">
+  <canvas id="MyDonnut" >{{ chart }}</canvas>
+</div>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Categorie</th>
+      <th scope="col">Quantité</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let liste of statCommande">
+      <td>{{ liste.categorie }}</td>
+      <td>{{ liste.quantite }}</td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+<h2 style="text-align: center;">Par rapport prix</h2>
+<div class="chart-container">
+  <canvas id="MyChart" >{{ chart }}</canvas>
+</div>
+
+ <br>
+
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Désignation</th>
+      <th scope="col">Prix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let liste of dataStatistique">
+      <td>{{ liste.designation }}</td>
+      <td>{{ liste.prix }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+

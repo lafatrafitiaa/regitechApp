@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<div class="py-3" *ngFor = "let rdv of ficheRdv">
+  <h1 class="text-center"> <h4>Rendez-vous avec</h4> <strong><em>{{ rdv.societe }}</em></strong></h1>
+  <form class="row g-3" [formGroup]="userForm">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Société</span>
+      <input type="text" class="form-control" value="{{ rdv.societe }}" disabled>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date</span>
+      <input type="text" class="form-control" placeholder="{{ rdv.daterdv }}" onfocus="(this.type = 'date')" onblur="(this.type='text ')" name="daterdv" formControlName="daterdv">
+      <span class="input-group-text">Heure</span>
+      <input type="text" class="form-control" placeholder="{{ rdv.heurerdv }}" onfocus="(this.type = 'time')" onblur="(this.type='text ')" name="heurerdv" formControlName="heurerdv">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Lieu</span>
+      <input type="text" class="form-control" placeholder="{{ rdv.lieu }}" name="lieu" formControlName="lieu">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Email Client</span>
+      <input type="email" class="form-control" value="{{ rdv.mailclient }}" name="mailclient" disabled>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Tel</span>
+      <input type="number" class="form-control" value="{{ rdv.tel }}" name="tel" disabled>
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">Motif</span>
+      <textarea class="form-control" aria-label="With textarea" name="motif" disabled>{{ rdv.motif }}</textarea>
+    </div>
+  </form>
+
+  <br>
+
+  <div class="row" >
+    <button type="button" class="btn btn-success" (click)="reporterRdv(rdv.id)" >Confirmer</button> <br><br>
+  </div>
+</div>
+
+
+
